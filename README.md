@@ -22,10 +22,11 @@ Settled (results already known):
 - Who's gonna vape during the ceremony — **Skippy**
 - First to spill drink — **Apollo**
 - First to cry — **Mackie**
+- Ask to take over the decks — **Jay**
 - Who asks for shots first — **Sessu**
 
-Still open: most drunk, ask to take over the decks, worst dressed, fall down
-stairs, get cut off from the bar, first to go to bed, show up last.
+Still open: most drunk, worst dressed, fall down stairs, get cut off from the
+bar, first to go to bed, show up last.
 
 Open-market prices always sum to exactly 100¢, the way a real multi-outcome
 market would. Charts are Brownian bridges anchored at the current price, so the
