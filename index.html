@@ -345,7 +345,7 @@
   /* ---------- price history: brownian bridge from open to current ---------- */
   var cache = {};
   function series(oi, range){
-    var k = oi + range;
+    var k = oi + "|" + range;
     if(cache[k]) return cache[k];
     var o = EVENTS[0].outcomes[oi];
     var n = range === "1H" ? 50 : range === "1D" ? 110 : range === "1W" ? 160 : range === "1M" ? 220 : 300;
@@ -370,9 +370,9 @@
   }
   function advance(){
     Object.keys(cache).forEach(function(k){
-      var oi = parseInt(k, 10);
+      var oi = parseInt(k.split("|")[0], 10);
       var s = cache[k];
-      if(!s) return;
+      if(!s || !EVENTS[0].outcomes[oi]) return;
       s.shift(); s.push(EVENTS[0].outcomes[oi].px);
     });
   }
