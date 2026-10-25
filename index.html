@@ -3,17 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Who asks for shots first? — Kalshi</title>
-<meta name="description" content="Fake prediction market: who asks for shots first. Not real. Not Kalshi.">
+<title>Kevin’s Wedding — Parlay Card</title>
+<meta name="description" content="Fake prediction markets for a wedding. Most drunk, first to cry, who asks for shots first. Not real. Not Kalshi.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0d10'/%3E%3Cpath d='M9 8v16M9 17l8-9M9 17l9 7' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#fff; --bg-soft:#f7f8f9; --card:#fff; --text:#0b0d10; --muted:#6b7280;
+    --bg:#fff; --bg-soft:#f6f7f9; --card:#fff; --text:#0b0d10; --muted:#6b7280;
     --line:#e6e8eb; --line-soft:#f0f2f4;
     --green:#0a9d6d; --green-soft:#e7f7f0; --red:#e5484d; --red-soft:#fdeeee;
+    --amber:#b45309; --amber-soft:#fff7ed;
     --hover:#f4f5f7; --shadow:0 1px 2px rgba(16,24,40,.05),0 1px 3px rgba(16,24,40,.06);
     --grid:rgba(11,13,16,.09);
   }
@@ -21,6 +22,7 @@
     --bg:#0b0d10; --bg-soft:#0f1216; --card:#11151a; --text:#f2f4f6; --muted:#a4aebc;
     --line:#222a32; --line-soft:#1a2027;
     --green:#2bd39b; --green-soft:#0e2a22; --red:#ff6b6b; --red-soft:#2a1518;
+    --amber:#fbbf24; --amber-soft:#2a2010;
     --hover:#181e25; --shadow:0 1px 2px rgba(0,0,0,.4); --grid:rgba(255,255,255,.13);
   }
   *{box-sizing:border-box}
@@ -36,7 +38,6 @@
   .mono{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
   .wrap{width:100%;max-width:1440px;margin:0 auto;padding:0 18px}
 
-  /* ---------- header ---------- */
   header{flex:0 0 auto;border-bottom:1px solid var(--line);background:var(--bg);z-index:20}
   .nav{display:flex;align-items:center;gap:18px;height:50px}
   .brand{display:flex;align-items:center;gap:7px;font-weight:700;font-size:15.5px;letter-spacing:-.3px}
@@ -57,136 +58,147 @@
   .av{width:27px;height:27px;border-radius:50%;background:linear-gradient(135deg,#5b7cfa,#9b5bfa);
     color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700}
 
-  /* ---------- ticker ---------- */
   .ticker{height:26px;overflow:hidden;background:var(--bg-soft);border-bottom:1px solid var(--line);position:relative}
-  .ticker-in{display:flex;gap:24px;align-items:center;height:26px;white-space:nowrap;
-    animation:slide 46s linear infinite;padding-left:18px}
+  .ticker-in{display:flex;gap:26px;align-items:center;height:26px;white-space:nowrap;
+    animation:slide 70s linear infinite;padding-left:18px}
   .ticker:hover .ticker-in{animation-play-state:paused}
   @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .tk{display:inline-flex;gap:6px;align-items:center;font-size:11px;color:var(--muted)}
   .tk b{color:var(--text);font-weight:600}
+  .tk i{font-style:normal;color:var(--muted);font-size:10px;opacity:.75;max-width:190px;overflow:hidden;
+    text-overflow:ellipsis}
+  .tk .done{color:var(--green);font-weight:700}
   .up{color:var(--green)} .down{color:var(--red)}
 
-  /* ---------- main ---------- */
   main{flex:1 1 auto;min-height:0;width:100%;max-width:1440px;margin:0 auto;padding:12px 18px;
-    display:grid;grid-template-columns:minmax(0,1fr) 372px;gap:12px}
+    display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:12px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);
     display:flex;flex-direction:column;min-height:0;min-width:0;overflow:hidden}
 
-  /* chart card */
-  .chead{padding:12px 14px 0;flex:0 0 auto}
-  .crumb{font-size:10.5px;color:var(--muted);letter-spacing:.2px;margin-bottom:3px}
-  .crumb b{color:var(--text);font-weight:500}
-  h1{font-size:19px;line-height:1.2;letter-spacing:-.4px;margin:0;font-weight:700}
-  .sub{font-size:11.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .prow{display:flex;align-items:center;gap:10px;padding:10px 0 8px;flex-wrap:wrap}
-  .pav{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;
-    background:var(--bg-soft);border:1px solid var(--line)}
-  .pnm{line-height:1.15}
-  .pnm b{font-size:13px;font-weight:600;display:block}
-  .pnm span{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
-  .pbig{font-size:26px;font-weight:700;letter-spacing:-1px;line-height:1;margin-left:2px}
-  .pdel{font-size:11.5px;font-weight:600}
-  .chips{display:flex;gap:6px;align-items:center;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
-  .seg{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
-  .seg button{padding:4px 7px;font-size:10.5px;color:var(--muted);font-weight:500}
-  .seg button.on{background:var(--bg-soft);color:var(--text);font-weight:600}
-  .seg button+button{border-left:1px solid var(--line)}
+  /* ---------- board ---------- */
+  .bhead{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line-soft)}
+  .bhead h1{font-size:15px;margin:0;font-weight:700;letter-spacing:-.3px;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .bhead .evt{font-size:10.5px;color:var(--muted);white-space:nowrap}
+  .bhead .pills{margin-left:auto;display:flex;gap:6px;flex:0 0 auto}
+  .pill{font-size:9.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:3px 7px;
+    border-radius:20px;border:1px solid var(--line);color:var(--muted)}
+  .pill.g{color:var(--green);border-color:var(--green);background:var(--green-soft)}
+  .pill.o{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 
-  .chartwrap{flex:1 1 auto;min-height:0;position:relative;padding:0 6px}
+  .board{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+  .brow{flex:1 1 0;min-height:0;display:grid;grid-template-columns:20px minmax(0,1fr) auto 44px;gap:12px;
+    align-items:center;padding:0 14px;border-bottom:1px solid var(--line-soft);cursor:pointer;
+    transition:background .12s}
+  .brow:last-child{border-bottom:0}
+  .brow:hover{background:var(--hover)}
+  .brow.sel{background:var(--bg-soft);box-shadow:inset 2px 0 0 var(--text)}
+  .brow.done{opacity:.92}
+  .st{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;
+    font-size:9px;font-weight:700;color:var(--muted);flex:0 0 auto}
+  .st.ok{background:var(--green);border-color:var(--green);color:#fff}
+  .q{min-width:0;line-height:1.25}
+  .q b{font-size:12.5px;font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .q span{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+  .q span.win{color:var(--green);font-weight:700}
+  .picks{display:flex;gap:5px;align-items:center;flex:0 0 auto;width:264px;justify-content:flex-end;overflow:hidden}
+  .pick{display:inline-flex;align-items:baseline;gap:4px;border:1px solid var(--line);border-radius:6px;
+    padding:3px 6px;font-size:10.5px;color:var(--muted);white-space:nowrap;background:var(--card)}
+  .pick b{color:var(--text);font-weight:600}
+  .pick.lead{border-color:var(--text);color:var(--text)}
+  .pick.won{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+  .pick.won b{color:var(--green)}
+  .brow .arrow{font-size:15px;color:var(--muted);text-align:right}
+
+  /* ---------- slip ---------- */
+  .shead{flex:0 0 auto;padding:10px 13px;border-bottom:1px solid var(--line-soft);display:flex;align-items:center;gap:8px}
+  .shead b{font-weight:700;letter-spacing:.4px;text-transform:uppercase;font-size:9.5px;color:var(--muted)}
+  .shead .stt{margin-left:auto;font-size:9.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+    color:var(--amber)}
+  .shead .stt.g{color:var(--green)}
+  .mtitle{flex:0 0 auto;padding:9px 13px 4px}
+  .mtitle b{display:block;font-size:13.5px;font-weight:700;letter-spacing:-.2px;line-height:1.25}
+  .mtitle span{display:block;font-size:10.5px;color:var(--muted);margin-top:1px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  .chartwrap{flex:1 1 auto;min-height:96px;position:relative;padding:0 6px}
   svg.chart{display:block}
-  .tip{position:absolute;pointer-events:none;background:var(--text);color:var(--bg);font-size:10.5px;
-    padding:4px 7px;border-radius:6px;opacity:0;transition:opacity .1s;white-space:nowrap;z-index:5;
-    transform:translate(-50%,-130%)}
-  .cfoot{flex:0 0 auto;display:flex;justify-content:space-between;gap:10px;padding:4px 14px 8px;
-    font-size:10.5px;color:var(--muted);flex-wrap:wrap}
-  .cstats{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);
-    border-top:1px solid var(--line-soft)}
-  .cstats>div{background:var(--card);padding:7px 12px}
-  .cstats .k{font-size:8.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
-  .cstats .v{font-weight:600;font-size:12px;margin-top:1px}
+  .tip{position:absolute;pointer-events:none;background:var(--text);color:var(--bg);font-size:10px;
+    padding:3px 6px;border-radius:5px;opacity:0;transition:opacity .1s;white-space:nowrap;z-index:5;
+    transform:translate(-50%,-135%)}
+  .rng{flex:0 0 auto;display:flex;gap:4px;justify-content:flex-end;padding:2px 12px 6px}
+  .rng button{font-size:9.5px;font-weight:600;color:var(--muted);padding:2px 6px;border-radius:5px;
+    border:1px solid transparent}
+  .rng button.on{color:var(--text);border-color:var(--line);background:var(--bg-soft)}
 
-  /* list card */
-  .lhead{flex:0 0 auto;display:flex;align-items:baseline;gap:7px;padding:11px 13px 9px;border-bottom:1px solid var(--line-soft)}
-  .lhead b{font-size:12.5px;font-weight:600}
-  .lhead span{font-size:10px;color:var(--muted);margin-left:auto}
-  .rows{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
-  .mrow{flex:1 1 0;min-height:0;display:flex;align-items:center;gap:9px;padding:0 12px;
-    border-bottom:1px solid var(--line-soft);cursor:pointer;transition:background .12s}
-  .mrow:last-child{border-bottom:0}
-  .mrow:hover{background:var(--hover)}
-  .mrow.sel{background:var(--bg-soft);box-shadow:inset 2px 0 0 var(--green)}
-  .mav{width:23px;height:23px;border-radius:50%;display:grid;place-items:center;font-size:10px;
-    font-weight:700;background:var(--bg-soft);border:1px solid var(--line);flex:0 0 auto}
-  .mnm{font-weight:600;font-size:12.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .mpx{font-weight:700;font-size:15px;letter-spacing:-.3px;margin-left:auto}
-  .mchg{font-size:10.5px;font-weight:600;width:47px;text-align:right;flex:0 0 auto}
-  .mspark{flex:0 0 auto;opacity:.9}
-  .mbtns{display:flex;gap:4px;flex:0 0 auto}
-  .yb,.nb{padding:5px 8px;border-radius:6px;font-size:10.5px;font-weight:700;border:1px solid var(--line);
-    min-width:38px;transition:background .12s,color .12s,border-color .12s}
-  .yb:hover{background:var(--green);border-color:var(--green);color:#fff}
-  .nb:hover{background:var(--red);border-color:var(--red);color:#fff}
-  .lfoot{flex:0 0 auto;display:flex;justify-content:space-between;padding:8px 13px;border-top:1px solid var(--line-soft);
-    font-size:10.5px;color:var(--muted)}
-  .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:5px;
-    vertical-align:middle}
+  .cands{flex:0 0 auto;border-top:1px solid var(--line-soft);overflow:hidden;display:flex;flex-direction:column}
+  .cand{display:flex;align-items:center;gap:8px;padding:0 13px;height:26px;flex:0 0 auto;
+    border-bottom:1px solid var(--line-soft);cursor:pointer;font-size:11.5px}
+  .cand:last-child{border-bottom:0}
+  .cand:hover{background:var(--hover)}
+  .cand.on{background:var(--bg-soft);box-shadow:inset 2px 0 0 var(--text)}
+  .cand .cav{width:16px;height:16px;border-radius:50%;background:var(--bg-soft);border:1px solid var(--line);
+    display:grid;place-items:center;font-size:8px;font-weight:700;flex:0 0 auto}
+  .cand .cn{font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cand .cv{margin-left:auto;font-weight:700;font-size:12px}
+  .cand .cq{font-size:9.5px;color:var(--muted);width:26px;text-align:right}
 
-  /* second market strip */
-  .strip{flex:0 0 auto;width:100%;max-width:1440px;margin:0 auto;padding:0 18px 10px}
-  .strip-card{border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:var(--shadow);
-    display:flex;align-items:center;gap:14px;padding:9px 13px;overflow:hidden}
-  .strip-t{flex:0 0 auto;line-height:1.2;max-width:180px}
-  .strip-t b{font-size:12px;font-weight:600;display:block;white-space:nowrap}
-  .strip-t span{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-  .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;flex:1 1 auto;min-width:0}
-  .tile{border:1px solid var(--line);border-radius:9px;padding:6px 8px;min-width:0;
-    display:flex;flex-direction:column;gap:2px;cursor:pointer;transition:border-color .12s,background .12s}
-  .tile:hover{border-color:var(--text);background:var(--bg-soft)}
-  .tile .n{font-size:11.5px;font-weight:600;display:flex;align-items:center;gap:5px;white-space:nowrap;overflow:hidden}
-  .tile .p{font-size:15px;font-weight:700;letter-spacing:-.3px;line-height:1.1}
-  .tile .c{font-size:10px;font-weight:600}
+  .ticket{flex:0 0 auto;border-top:1px solid var(--line);padding:9px 12px;background:var(--bg-soft)}
+  .trow{display:flex;align-items:center;gap:8px}
+  .trow .lbl{font-size:9.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
+  .trow .px{font-size:17px;font-weight:700;letter-spacing:-.5px;margin-left:auto}
+  .obtn{flex:1 1 0;padding:8px;border-radius:8px;font-weight:700;font-size:11.5px;border:1px solid var(--line);
+    background:var(--card)}
+  .obtn.y{border-color:var(--green);color:var(--green)}
+  .obtn.y:hover{background:var(--green);color:#fff}
+  .obtn.y.on{background:var(--green);color:#fff}
+  .obtn.n{border-color:var(--red);color:var(--red)}
+  .obtn.n:hover{background:var(--red);color:#fff}
+  .obtn.n.on{background:var(--red);color:#fff}
+  .slipbar{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:10.5px;color:var(--muted)}
+  .slipbar b{color:var(--text);font-weight:600}
+  .place{background:var(--text);color:var(--bg);border-radius:7px;padding:6px 10px;font-weight:700;
+    font-size:10.5px;margin-left:auto;white-space:nowrap}
+  .place:hover{opacity:.87}
+  .clearbtn{font-size:9.5px;color:var(--muted);text-decoration:underline;flex:0 0 auto}
+
+  .settled{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:1px;padding:10px;background:var(--green-soft)}
+  .settled .badge{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--green)}
+  .settled .who{font-size:25px;font-weight:700;letter-spacing:-.9px;color:var(--text)}
+  .settled .at{font-size:10.5px;color:var(--muted)}
 
   footer{flex:0 0 auto;border-top:1px solid var(--line);padding:5px 0}
   footer .in{display:flex;gap:12px;align-items:center;font-size:10px;color:var(--muted)}
-  footer .in span+span{margin-left:auto}
+  footer .in span+span{margin-left:auto;white-space:nowrap}
 
   #toasts{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:200;display:flex;
-    flex-direction:column;gap:7px;align-items:center;pointer-events:none;width:calc(100% - 30px);max-width:420px}
+    flex-direction:column;gap:7px;align-items:center;pointer-events:none;width:calc(100% - 30px);max-width:440px}
   .toast{background:var(--text);color:var(--bg);padding:9px 13px;border-radius:9px;font-size:12px;
     box-shadow:0 8px 24px rgba(0,0,0,.18);animation:tin .22s ease-out;max-width:100%}
   @keyframes tin{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 
-  @media(max-width:480px){
-    .bal{display:none}
-    .navright{gap:6px}
-    .wrap{padding:0 12px}
-    main{padding:8px 10px}
-    .strip{padding:0 10px 8px}
-  }
+  @media(max-width:480px){ .bal{display:none} .navright{gap:6px} .wrap{padding:0 12px}
+    main{padding:8px 10px} }
   @media(max-width:1080px){
-    .mspark{display:none}
-    main{grid-template-columns:minmax(0,1fr) 330px}
+    main{grid-template-columns:minmax(0,1fr) 344px}
+    .picks{width:210px}
   }
-  @media(max-width:860px){
+  @media(max-width:900px){
     body{overflow:auto;height:auto;min-height:100%}
     main{grid-template-columns:1fr;padding:10px 12px}
-    .chartcard{min-height:330px}
-    .chartwrap{min-height:190px;overflow:hidden}
-    .mrow{flex:0 0 auto;min-height:50px}
-    .mchg{width:auto}
-    .mbtns{gap:5px}
-    .yb,.nb{padding:7px 9px}
-    .nograph{display:none}
-    .strip{padding:0 12px 10px}
-    .strip-card{flex-direction:column;align-items:stretch;gap:8px}
-    .strip-t{max-width:none;display:flex;gap:8px;align-items:baseline}
-    .tiles{grid-template-columns:repeat(3,1fr)}
-    .strip-t b{white-space:normal}
+    .brow{flex:0 0 auto;min-height:58px;grid-template-columns:20px minmax(0,1fr) 44px;row-gap:3px;
+      padding:8px 12px}
+    .picks{grid-column:2/4;width:auto;max-width:100%;flex-wrap:wrap;gap:4px;justify-content:flex-start}
+    .q b{white-space:normal}
+    .chartwrap{min-height:130px}
     .navlinks{display:none}
     .nav{gap:10px}
-    h1{font-size:17px}
-    .sub{white-space:normal}
+    .cand{height:30px}
+    .bhead{gap:8px;padding:9px 12px}
+    .bhead .evt{display:none}
+    .bhead h1{font-size:14px}
+    .pill{font-size:9px;padding:2px 6px}
   }
 </style>
 </head>
@@ -203,7 +215,7 @@
       Kalshi <span class="chip">demo</span>
     </a>
     <nav class="navlinks">
-      <a href="#" class="on">Markets</a>
+      <a href="#" class="on">Wedding card</a>
       <a href="#" data-fake="Portfolio">Portfolio</a>
       <a href="#" data-fake="Activity">Activity</a>
       <a href="#" data-fake="Leaderboard">Leaderboard</a>
@@ -216,69 +228,39 @@
           <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
         </svg>
       </button>
-      <div class="av">R</div>
+      <div class="av">K</div>
     </div>
   </div>
   <div class="ticker"><div class="ticker-in" id="ticker"></div></div>
 </header>
 
 <main>
-  <!-- chart -->
-  <section class="card chartcard">
-    <div class="chead">
-      <div class="crumb">Explore / Culture / <b>Group Dynamics</b></div>
-      <h1>Who asks for shots first?</h1>
-      <div class="sub">First person to say “shots” out loud. Bathroom texts don’t count.</div>
-      <div class="prow">
-        <div class="pav" id="pav">S</div>
-        <div class="pnm"><b id="pnm">Sessu</b><span>Yes price</span></div>
-        <div class="pbig mono" id="pbig">41¢</div>
-        <div class="pdel mono" id="pdel">+3.2¢</div>
-        <div class="chips">
-          <div class="seg" id="ranges"></div>
-          <div class="seg" id="ctype">
-            <button data-type="line" class="on">Line</button>
-            <button data-type="candle">Candles</button>
-          </div>
-        </div>
+  <section class="card">
+    <div class="bhead">
+      <h1>Kevin’s wedding</h1>
+      <span class="evt">11 markets · one card</span>
+      <div class="pills">
+        <span class="pill o" id="pillOpen">6 open</span>
+        <span class="pill g" id="pillDone">5 settled</span>
       </div>
     </div>
-    <div class="chartwrap" id="cw">
-      <svg class="chart" id="chart"></svg>
-      <div class="tip" id="tip"></div>
-    </div>
-    <div class="cfoot">
-      <span id="cfoot1">Last trade 41¢ · 1 min ago</span>
-      <span class="mono" id="cfoot2">O 38¢ &nbsp;H 42¢ &nbsp;L 37¢ &nbsp;C 41¢</span>
-    </div>
-    <div class="cstats">
-      <div><div class="k">Volume</div><div class="v mono" id="sVol">$48,213</div></div>
-      <div><div class="k">Open interest</div><div class="v mono" id="sOI">$12,904</div></div>
-      <div><div class="k">Traders</div><div class="v mono" id="sTr">1,104</div></div>
-      <div><div class="k">Closes in</div><div class="v mono" id="sClose">1d 14h</div></div>
-    </div>
+    <div class="board" id="board"></div>
   </section>
 
-  <!-- all outcomes -->
   <section class="card">
-    <div class="lhead"><b>Who asks for shots first?</b><span>6 markets · sums to 100¢</span></div>
-    <div class="rows" id="rows"></div>
-    <div class="lfoot"><span><span class="dot"></span> live prices</span><span id="lfoot">Resolves at 11:59 PM</span></div>
+    <div class="shead"><b id="slipKicker">Market</b><span class="stt" id="slipStatus">Open</span></div>
+    <div class="mtitle"><b id="mTitle">Most drunk</b><span id="mSub">Who is leaving the reception sideways.</span></div>
+    <div class="chartwrap" id="cw"><svg class="chart" id="chart"></svg><div class="tip" id="tip"></div></div>
+    <div class="rng" id="rng"></div>
+    <div class="cands" id="cands"></div>
+    <div class="ticket" id="ticket"></div>
   </section>
 </main>
 
-<!-- second market -->
-<div class="strip">
-  <div class="strip-card">
-    <div class="strip-t"><b>Who’s gonna show up last?</b><span>6 markets</span></div>
-    <div class="tiles" id="tiles"></div>
-  </div>
-</div>
-
 <footer>
   <div class="wrap in">
-    <span>Not Kalshi. Fake prices, fake charts, fake money — a joke between friends.</span>
-    <span class="nograph" id="clock">Last update just now</span>
+    <span>Not Kalshi. Fake prices, fake charts, fake money — a joke for Kevin’s wedding.</span>
+    <span id="clock">Last update just now</span>
   </div>
 </footer>
 
@@ -287,29 +269,6 @@
 <script>
 (function(){
   "use strict";
-
-  var EVENTS = [
-    { key:"shots", title:"Who asks for shots first?",
-      outcomes:[
-        {name:"Sessu", px:41, chg:3.2,  vol:21480},
-        {name:"Jay",   px:24, chg:-1.4, vol:11290},
-        {name:"Axel",  px:15, chg:1.1,  vol:6410},
-        {name:"Carcar",px:11, chg:-0.8, vol:4120},
-        {name:"Alazel",px:6,  chg:0.4,  vol:2870},
-        {name:"Fisk",  px:4,  chg:-2.5, vol:2043}
-      ]},
-    { key:"last", title:"Who’s gonna show up last?",
-      outcomes:[
-        {name:"Axel",  px:33, chg:2.6,  vol:13920},
-        {name:"Sessu", px:26, chg:-1.9, vol:8420},
-        {name:"Jay",   px:15, chg:0.7,  vol:3910},
-        {name:"Fisk",  px:12, chg:1.3,  vol:3110},
-        {name:"Carcar",px:8,  chg:-0.6, vol:1620},
-        {name:"Alazel",px:6,  chg:0.2,  vol:780}
-      ]}
-  ];
-
-  var state = { out:0, range:"1D", type:"line" };
 
   var $ = function(s){ return document.querySelector(s); };
   var money0 = function(n){ return "$" + Math.round(n).toLocaleString("en-US"); };
@@ -330,29 +289,82 @@
     };
   }
 
-  /* keep the six outcomes summing to exactly 100¢ */
   function balance(ev){
     var sum = ev.outcomes.reduce(function(a,o){ return a + o.px; }, 0);
-    var diff = 100 - sum;
-    if(diff !== 0){
-      var big = ev.outcomes.reduce(function(m,o){ return o.px > m.px ? o : m; }, ev.outcomes[0]);
-      big.px = clamp(big.px + diff, 1, 99);
-    }
-    var s2 = ev.outcomes.reduce(function(a,o){ return a + o.px; }, 0);
-    if(s2 !== 100) ev.outcomes[ev.outcomes.length-1].px = clamp(ev.outcomes[ev.outcomes.length-1].px + (100-s2), 1, 99);
+    var big = ev.outcomes.reduce(function(m,o){ return o.px > m.px ? o : m; }, ev.outcomes[0]);
+    big.px = clamp(big.px + (100 - sum), 1, 99);
   }
 
-  /* ---------- price history: brownian bridge from open to current ---------- */
+  /* one market per form question. winner = settled at 100c, null = still open. */
+  var EVENTS = [
+    { key:"drunk",  q:"Most drunk", sub:"Reception, after the first speech.", winner:null,
+      outcomes:[["Axel",27],["Sessu",18],["Eddie",14],["Jay",11],["Boomer",9],
+                ["Maddie",7],["Zero",5],["Disjoint",4],["Ari",3],["Apollo",2]] },
+
+    { key:"vape",   q:"Who’s gonna vape during the ceremony", sub:"Kevin called it: Skippy.", winner:"Skippy",
+      outcomes:[["Skippy",58],["Jay",13],["Boomer",10],["Eddie",8],["Fisk",6],["Someone else",5]] },
+
+    { key:"decks",  q:"Ask to take over the decks", sub:"One song. It’s always one song.", winner:null,
+      outcomes:[["Videl",31],["Fisk",24],["Jay",18],["Carcar",12],["Fleck",9],["Sky",6]] },
+
+    { key:"dressed",q:"Who’s gonna be worst dressed", sub:"Kevin called it: Sam. Sorry, Sam.", winner:null,
+      outcomes:[["Sam",44],["Axel",16],["Boomer",12],["Fisk",10],["Eddie",9],["Someone else",9]] },
+
+    { key:"spill",  q:"First to spill drink", sub:"Apollo. Long sleeves, full glass.", winner:"Apollo",
+      outcomes:[["Eddie",34],["Miko",18],["Shiro",15],["Rory",12],["Jay",9],["Skippy",7],["Boomer",5],["Apollo",1]] },
+
+    { key:"stairs", q:"Fall down stairs", sub:"Kevin called it: Pox. Concerning.", winner:null,
+      outcomes:[["Pox",52],["Boomer",14],["Eddie",11],["Axel",9],["Shiro",7],["Someone else",7]] },
+
+    { key:"cry",    q:"First to cry", sub:"Vows or speeches. Both count.", winner:"Mackie",
+      outcomes:[["Axel",29],["Maddie",21],["Jyno",15],["Videl",12],["Shiro",10],["Carly",8],["Jay",5],["Mackie",1]] },
+
+    { key:"cutoff", q:"Who’s gonna get cut off from the bar", sub:"Kevin called it: Fleck. Legend.", winner:null,
+      outcomes:[["Fleck",47],["Boomer",16],["Eddie",13],["Jay",10],["Skippy",8],["Someone else",6]] },
+
+    { key:"bed",    q:"First to go to bed", sub:"Someone always vanishes by 9:30.", winner:null,
+      outcomes:[["Shiro",36],["Kurama",17],["Kiba",14],["Ryno",12],["Jake",9],["Rory",7],["Mav",5]] },
+
+    { key:"shots",  q:"Who asks for shots first", sub:"The original market. Sessu, obviously.", winner:"Sessu",
+      outcomes:[["Sessu",40],["Jay",24],["Axel",15],["Carcar",11],["Alazel",6],["Fisk",4]] },
+
+    { key:"last",   q:"Who’s gonna show up last", sub:"Free text on the form. We priced it anyway.", winner:null,
+      outcomes:[["Axel",33],["Sessu",26],["Jay",15],["Fisk",12],["Carcar",8],["Alazel",6]] }
+  ];
+
+  EVENTS.forEach(function(ev){
+    ev.outcomes = ev.outcomes.map(function(a){
+      return { name:a[0], px:a[1], vol:2400 + hashStr(ev.key + a[0]) % 19000 };
+    });
+    if(ev.winner){
+      ev.outcomes.forEach(function(o){ o.px = (o.name === ev.winner) ? 100 : 0; o.chg = 0; });
+      ev.outcomes.sort(function(a,b){ return b.px - a.px || a.name.localeCompare(b.name); });
+    } else {
+      balance(ev);
+      ev.outcomes.forEach(function(o){
+        o.chg = Math.round(((hashStr(ev.key + o.name + "c") % 90) / 10 - 4.4) * 10) / 10;
+      });
+    }
+  });
+
+  var state = { ei:0, out:0, range:"1D" };
+  var legs = {};   /* "ei-oi-side" */
+
+  var cur = function(){ return EVENTS[state.ei]; };
+  var curOut = function(){ return cur().outcomes[state.out]; };
+  var isSettled = function(){ return !!cur().winner; };
+
+  /* ---------- history ---------- */
   var cache = {};
-  function series(oi, range){
-    var k = oi + "|" + range;
+  function series(ei, oi, range){
+    var k = ei + "|" + oi + "|" + range;
     if(cache[k]) return cache[k];
-    var o = EVENTS[0].outcomes[oi];
-    var n = range === "1H" ? 50 : range === "1D" ? 110 : range === "1W" ? 160 : range === "1M" ? 220 : 300;
-    var mult = range === "1H" ? 0.3 : range === "1D" ? 1 : range === "1W" ? 2.1 : range === "1M" ? 3.2 : 4.6;
-    var rnd = mulberry32(hashStr("shots" + o.name + range));
-    var end = o.px, start = clamp(end - o.chg * mult, 1, 99);
-    var vol = 0.32 + o.px * 0.03;
+    var o = EVENTS[ei].outcomes[oi];
+    var n = range === "1D" ? 90 : range === "1W" ? 150 : 260;
+    var mult = range === "1D" ? 1 : range === "1W" ? 2.4 : 4.8;
+    var rnd = mulberry32(hashStr(EVENTS[ei].key + o.name + range));
+    var end = o.px, start = clamp(end - o.chg * mult, 0, 100);
+    var vol = 0.32 + Math.max(o.px, 6) * 0.03;
     var walk = [0], x = 0, i;
     for(i=1;i<n;i++){
       var step = (rnd()-0.5) * vol;
@@ -362,7 +374,7 @@
     var drift = walk[n-1], out = [];
     for(i=0;i<n;i++){
       var t = i/(n-1);
-      out.push(clamp(start + (end-start)*t + (walk[i] - drift*t), 1, 99));
+      out.push(clamp(start + (end-start)*t + (walk[i] - drift*t), 0, 100));
     }
     out[n-1] = end;
     cache[k] = out;
@@ -370,268 +382,249 @@
   }
   function advance(){
     Object.keys(cache).forEach(function(k){
-      var oi = parseInt(k.split("|")[0], 10);
+      var p = k.split("|"), ev = EVENTS[+p[0]], o = ev && ev.outcomes[+p[1]];
       var s = cache[k];
-      if(!s || !EVENTS[0].outcomes[oi]) return;
-      s.shift(); s.push(EVENTS[0].outcomes[oi].px);
+      if(!s || !o) return;
+      s.shift(); s.push(o.px);
     });
   }
 
   /* ---------- chart ---------- */
-  var CW = 700, CH = 320, PL = 34, PR = 44, PT = 10, PB = 20;
+  var CW = 340, CH = 150, PL = 26, PR = 38, PT = 8, PB = 16;
   var svg = $("#chart");
 
   function measure(){
     var el = $("#cw");
-    var r = el.getBoundingClientRect();
-    CW = Math.max(240, Math.round(el.clientWidth - 12));   /* 6px padding each side */
-    CH = Math.max(140, Math.round(r.height));
+    if(!el){ return false; }
+    CW = Math.max(200, Math.round(el.clientWidth - 12));
+    CH = Math.max(80, Math.round(el.getBoundingClientRect().height));
     svg.setAttribute("width", CW);
     svg.setAttribute("height", CH);
     svg.setAttribute("viewBox", "0 0 " + CW + " " + CH);
+    return true;
   }
   function xAt(i,n){ return PL + (CW-PL-PR) * (n===1 ? 0 : i/(n-1)); }
   function yAt(v,lo,hi){ return PT + (CH-PT-PB) * (1 - (v-lo)/(hi-lo || 1)); }
-  function nice(lo,hi){
-    var raw = (hi-lo)/4 || 1;
-    var mag = Math.pow(10, Math.floor(Math.log10(raw)));
-    var n = raw/mag;
-    var step = (n<=1?1:n<=2?2:n<=5?5:10)*mag;
-    return { lo: Math.floor(lo/step)*step, hi: Math.ceil(hi/step)*step, step: step };
-  }
-  function candles(s, count){
-    var out = [], per = Math.max(1, Math.floor(s.length/count));
-    for(var i=0;i<s.length;i+=per){
-      var c = s.slice(i, i+per);
-      if(!c.length) continue;
-      out.push({ o:c[0], c:c[c.length-1], h:Math.max.apply(null,c), l:Math.min.apply(null,c) });
-    }
-    return out;
-  }
 
   function draw(){
-    var o = EVENTS[0].outcomes[state.out];
-    var s = series(state.out, state.range);
+    if(!document.getElementById("cw")) return;
+    var o = curOut(), s = series(state.ei, state.out, state.range);
     var lo = Math.min.apply(null,s), hi = Math.max.apply(null,s);
-    var rawLo = lo, rawHi = hi;
-    var pad = Math.max(0.8, (hi-lo)*0.12);
-    var ns = nice(Math.max(0, lo-pad), Math.min(100, hi+pad));
-    lo = Math.max(0, ns.lo); hi = Math.min(100, ns.hi);
-    if(hi-lo < 3) hi = Math.min(100, lo+3);
+    var m = Math.max(1.5, (hi-lo)*0.15);
+    lo = Math.max(0, lo-m); hi = Math.min(100, hi+m);
+    if(hi-lo < 6){ hi = Math.min(100, lo+6); }
 
-    var p = [], i, v, y;
-    for(v=lo; v<=hi+1e-9; v+=ns.step){
-      y = yAt(v,lo,hi);
+    var p = [], i;
+    [0, 0.5, 1].forEach(function(f){
+      var v = lo + (hi-lo)*f, y = yAt(v,lo,hi);
       p.push('<line x1="'+PL+'" y1="'+y.toFixed(1)+'" x2="'+(CW-PR)+'" y2="'+y.toFixed(1)+
         '" stroke="var(--grid)"/>');
-      p.push('<text x="'+(PL-6)+'" y="'+(y+3.4).toFixed(1)+'" text-anchor="end" font-size="9.5" '+
-        'fill="currentColor" fill-opacity="0.42">'+Math.round(v)+'\u00A2</text>');
-    }
-
-    if(state.type === "line"){
-      var d = "";
-      for(i=0;i<s.length;i++){
-        d += (i?"L":"M") + xAt(i,s.length).toFixed(1) + " " + yAt(s[i],lo,hi).toFixed(1) + " ";
-      }
-      p.push('<defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">'+
-        '<stop offset="0%" stop-color="var(--green)" stop-opacity="0.20"/>'+
-        '<stop offset="100%" stop-color="var(--green)" stop-opacity="0"/></linearGradient></defs>');
-      p.push('<path d="'+d+'L'+(CW-PR)+' '+(CH-PB)+' L'+PL+' '+(CH-PB)+' Z" fill="url(#g1)"/>');
-      p.push('<path d="'+d+'" fill="none" stroke="var(--green)" stroke-width="1.8" '+
-        'stroke-linejoin="round" stroke-linecap="round"/>');
-    } else {
-      var count = Math.max(14, Math.round(CW/22));
-      var rndc = mulberry32(hashStr(o.name + state.range + "candles"));
-      var cs = [], per = s.length/count, k;
-      for(k=0;k<count;k++){
-        var i0 = Math.min(s.length-1, Math.floor(k*per));
-        var i1 = Math.min(s.length-1, Math.max(i0+1, Math.floor((k+1)*per)));
-        var oo = s[i0], cc = s[i1];
-        var wick = 0.12 + rndc()*0.55;
-        cs.push({ o:oo, c:cc,
-                  h:Math.min(100, Math.max(oo,cc) + wick*rndc()),
-                  l:Math.max(0, Math.min(oo,cc) - wick*rndc()) });
-      }
-      var cw = Math.max(3, (CW-PL-PR)/cs.length * 0.58);
-      cs.forEach(function(c,idx){
-        var x = xAt(idx, cs.length-1) + (idx===0||idx===cs.length-1 ? 0 : 0);
-        x = PL + (CW-PL-PR) * (idx/(cs.length-1));
-        var col = c.c >= c.o ? "var(--green)" : "var(--red)";
-        p.push('<line x1="'+x.toFixed(1)+'" y1="'+yAt(c.h,lo,hi).toFixed(1)+'" x2="'+x.toFixed(1)+
-          '" y2="'+yAt(c.l,lo,hi).toFixed(1)+'" stroke="'+col+'"/>');
-        var y1 = yAt(Math.max(c.o,c.c),lo,hi), y2 = yAt(Math.min(c.o,c.c),lo,hi);
-        p.push('<rect x="'+(x-cw/2).toFixed(1)+'" y="'+y1.toFixed(1)+'" width="'+cw.toFixed(1)+
-          '" height="'+Math.max(1.8,y2-y1).toFixed(1)+'" fill="'+col+'" rx="1"/>');
-      });
-    }
-
-    var lastY = clamp(yAt(o.px,lo,hi), PT+8, CH-PB-8);
-    p.push('<line x1="'+PL+'" y1="'+lastY.toFixed(1)+'" x2="'+(CW-PR)+'" y2="'+lastY.toFixed(1)+
-      '" stroke="var(--green)" stroke-opacity="0.5" stroke-dasharray="3 4"/>');
-    p.push('<rect x="'+(CW-PR+3)+'" y="'+(lastY-8).toFixed(1)+'" width="36" height="16" rx="4" fill="var(--green)"/>');
-    p.push('<text x="'+(CW-PR+21)+'" y="'+(lastY+3.6).toFixed(1)+'" text-anchor="middle" font-size="9.5" '+
-      'font-weight="700" fill="#fff">'+Math.round(o.px)+'\u00A2</text>');
-
-    var labs = { "1H":["60m","45m","30m","15m","now"], "1D":["24h","18h","12h","6h","now"],
-                 "1W":["7d","5d","3d","1d","now"], "1M":["30d","22d","15d","7d","now"],
-                 "ALL":["Oct 3","Oct 10","Oct 17","Oct 22","now"] }[state.range];
-    labs.forEach(function(lab,idx){
-      var x = PL + (CW-PL-PR) * (idx/(labs.length-1));
-      p.push('<text x="'+x.toFixed(1)+'" y="'+(CH-6)+'" text-anchor="'+
-        (idx===0?"start":idx===labs.length-1?"end":"middle")+'" font-size="9.5" '+
-        'fill="currentColor" fill-opacity="0.42">'+lab+'</text>');
+      p.push('<text x="'+(PL-5)+'" y="'+(y+3).toFixed(1)+'" text-anchor="end" font-size="8.5" '+
+        'fill="currentColor" fill-opacity="0.4">'+Math.round(v)+'</text>');
     });
+
+    var d = "";
+    for(i=0;i<s.length;i++){
+      d += (i?"L":"M") + xAt(i,s.length).toFixed(1) + " " + yAt(s[i],lo,hi).toFixed(1) + " ";
+    }
+    p.push('<defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">'+
+      '<stop offset="0%" stop-color="var(--green)" stop-opacity="0.18"/>'+
+      '<stop offset="100%" stop-color="var(--green)" stop-opacity="0"/></linearGradient></defs>');
+    p.push('<path d="'+d+'L'+(CW-PR)+' '+(CH-PB)+' L'+PL+' '+(CH-PB)+' Z" fill="url(#g1)"/>');
+    p.push('<path d="'+d+'" fill="none" stroke="var(--green)" stroke-width="1.7" '+
+      'stroke-linejoin="round" stroke-linecap="round"/>');
+
+    var lastY = clamp(yAt(o.px,lo,hi), PT+7, CH-PB-7);
+    p.push('<line x1="'+PL+'" y1="'+lastY.toFixed(1)+'" x2="'+(CW-PR)+'" y2="'+lastY.toFixed(1)+
+      '" stroke="var(--green)" stroke-opacity="0.45" stroke-dasharray="3 4"/>');
+    p.push('<rect x="'+(CW-PR+2)+'" y="'+(lastY-7).toFixed(1)+'" width="32" height="14" rx="4" fill="var(--green)"/>');
+    p.push('<text x="'+(CW-PR+18)+'" y="'+(lastY+3).toFixed(1)+'" text-anchor="middle" font-size="8.5" '+
+      'font-weight="700" fill="#fff">'+Math.round(o.px)+'</text>');
 
     p.push('<g id="cross" style="display:none"><line id="cl" y1="'+PT+'" y2="'+(CH-PB)+
       '" stroke="currentColor" stroke-opacity="0.3" stroke-dasharray="3 3"/>'+
-      '<circle id="cd" r="3.5" fill="var(--green)" stroke="var(--card)" stroke-width="2"/></g>');
+      '<circle id="cd" r="3" fill="var(--green)" stroke="var(--card)" stroke-width="1.6"/></g>');
 
     svg.innerHTML = p.join("");
     bindCross(s, lo, hi);
-    $("#cfoot1").textContent = "Last trade " + cents(o.px) + " · " + (1+Math.floor(Math.random()*3)) + " min ago · " + state.range;
-    $("#cfoot2").innerHTML = "O " + cents(s[0]) + " &nbsp;H " + cents(rawHi) + " &nbsp;L " + cents(rawLo) + " &nbsp;C " + cents(o.px);
   }
 
   function bindCross(s, lo, hi){
     var tip = $("#tip"), box = $("#cw");
+    if(!tip || !box) return;
     var grp = svg.querySelector("#cross"), line = svg.querySelector("#cl"), dot = svg.querySelector("#cd");
     if(!grp) return;
     svg.onmousemove = function(e){
-      var r = svg.getBoundingClientRect();
+      var r = svg.getBoundingClientRect(), br = box.getBoundingClientRect();
       var t = clamp((e.clientX - r.left - PL) / (CW-PL-PR), 0, 1);
       var idx = Math.round(t * (s.length-1));
       var x = xAt(idx, s.length), y = yAt(s[idx], lo, hi);
       grp.style.display = "";
       line.setAttribute("x1", x); line.setAttribute("x2", x);
       dot.setAttribute("cx", x); dot.setAttribute("cy", y);
-      tip.style.left = (r.left - box.getBoundingClientRect().left + x) + "px";
-      tip.style.top = (r.top - box.getBoundingClientRect().top + y) + "px";
+      tip.style.left = (r.left - br.left + x) + "px";
+      tip.style.top = (r.top - br.top + y) + "px";
       tip.style.opacity = 1;
-      tip.textContent = cents(s[idx]) + " · " + Math.round((1-idx/(s.length-1)) *
-        (state.range==="1H"?60:state.range==="1D"?24:state.range==="1W"?168:720)) + "h ago";
+      tip.textContent = cents(s[idx]);
     };
     svg.onmouseleave = function(){ grp.style.display = "none"; tip.style.opacity = 0; };
   }
 
-  /* ---------- sparkline ---------- */
-  function spark(oi, evIdx){
-    var s = evIdx === 0 ? series(oi, "1D") : synth(evIdx, oi);
-    var w = 54, h = 20, lo = Math.min.apply(null,s), hi = Math.max.apply(null,s), d = "";
-    for(var i=0;i<s.length;i++){
-      var x = (i/(s.length-1)*w).toFixed(1);
-      var y = (h - ((s[i]-lo)/((hi-lo)||1)) * (h-4) - 2).toFixed(1);
-      d += (i?"L":"M") + x + " " + y + " ";
-    }
-    var up = s[s.length-1] >= s[0];
-    return '<svg class="mspark" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'+
-      '<path d="'+d+'" fill="none" stroke="'+(up?"var(--green)":"var(--red)")+'" stroke-width="1.4" '+
-      'stroke-linejoin="round" stroke-linecap="round"/></svg>';
-  }
-  function synth(evIdx, oi){
-    var o = EVENTS[evIdx].outcomes[oi];
-    var rnd = mulberry32(hashStr("s"+evIdx+o.name)), n = 40, out = [o.px];
-    for(var i=1;i<n;i++) out.push(clamp(out[i-1] - (rnd()-0.5)*1.4, 1, 99));
-    out[n-1] = o.px;
-    return out;
+  /* ---------- board ---------- */
+  function renderBoard(){
+    var open = EVENTS.filter(function(e){ return !e.winner; }).length;
+    $("#pillOpen").textContent = open + " open";
+    $("#pillDone").textContent = (EVENTS.length - open) + " settled";
+
+    $("#board").innerHTML = EVENTS.map(function(ev,ei){
+      var picks;
+      if(ev.winner){
+        picks = '<span class="pick won"><b>'+ev.winner+'</b> 100\u00A2</span>';
+      } else {
+        var ranked = ev.outcomes.slice().sort(function(a,b){
+          return (b.px - a.px) || a.name.localeCompare(b.name);
+        });
+        picks = ranked.slice(0,3).map(function(o,j){
+          return '<span class="pick '+(j===0?"lead":"")+'"><b>'+o.name+'</b> '+cents(o.px)+'</span>';
+        }).join("");
+      }
+      var meta = ev.winner
+        ? '<span class="win">Settled · '+ev.winner+'</span>'
+        : '<span>'+ev.outcomes.length+' outcomes · '+
+          money0(ev.outcomes.reduce(function(a,o){ return a+o.vol; },0))+' vol</span>';
+      return '<div class="brow '+(ei===state.ei?"sel":"")+(ev.winner?" done":"")+'" data-ev="'+ei+'">'+
+        '<span class="st '+(ev.winner?"ok":"")+'">'+(ev.winner?"\u2713":"")+'</span>'+
+        '<div class="q"><b>'+ev.q+'</b>'+meta+'</div>'+
+        '<div class="picks">'+picks+'</div>'+
+        '<span class="arrow">\u203A</span></div>';
+    }).join("");
   }
 
-  /* ---------- render ---------- */
-  function renderHead(){
-    var o = EVENTS[0].outcomes[state.out];
-    $("#pav").textContent = o.name[0];
-    $("#pnm").textContent = o.name;
-    $("#pbig").textContent = cents(o.px);
-    $("#pdel").textContent = (o.chg>=0?"+":"") + o.chg.toFixed(1) + "\u00A2";
-    $("#pdel").className = "pdel mono " + (o.chg>=0?"up":"down");
-    $("#cfoot1").textContent = "Last trade " + cents(o.px) + " · 1 min ago · " + state.range;
-  }
-
+  /* ---------- slip ---------- */
   function renderRanges(){
-    $("#ranges").innerHTML = ["1H","1D","1W","1M","ALL"].map(function(r){
+    $("#rng").innerHTML = ["1D","1W","ALL"].map(function(r){
       return '<button data-range="'+r+'" class="'+(r===state.range?"on":"")+'">'+r+'</button>';
     }).join("");
   }
 
-  function renderRows(){
-    var html = "";
-    EVENTS[0].outcomes.forEach(function(o,i){
-      var up = o.chg >= 0;
-      html += '<div class="mrow '+(i===state.out?"sel":"")+'" data-row="'+i+'">'+
-        '<span class="mav">'+o.name[0]+'</span>'+
-        '<span class="mnm">'+o.name+'</span>'+
-        spark(i, 0) +
-        '<span class="mchg mono '+(up?"up":"down")+'">'+(up?"+":"")+o.chg.toFixed(1)+'\u00A2</span>'+
-        '<span class="mpx mono">'+cents(o.px)+'</span>'+
-        '<span class="mbtns">'+
-          '<button class="yb" data-buy="yes" data-i="'+i+'">Yes</button>'+
-          '<button class="nb" data-buy="no" data-i="'+i+'">No</button>'+
-        '</span></div>';
+  function renderSlip(){
+    var ev = cur(), settled = isSettled();
+    $("#mTitle").textContent = ev.q;
+    $("#mSub").textContent = ev.sub;
+    $("#slipKicker").textContent = settled ? "Settled market" : "Market";
+    $("#slipStatus").textContent = settled ? "Settled" : "Open";
+    $("#slipStatus").className = "stt" + (settled ? " g" : "");
+    $("#rng").style.display = settled ? "none" : "";
+
+    var box = document.getElementById("settledBox");
+    if(settled){
+      if(!box){
+        box = document.createElement("div");
+        box.id = "settledBox"; box.className = "settled";
+        $("#cw").replaceWith(box);
+      }
+      box.innerHTML = '<div class="badge">winner</div><div class="who">'+ev.winner+'</div>'+
+        '<div class="at">resolved at 100\u00A2 · market closed</div>';
+    } else if(box){
+      var wrap = document.createElement("div");
+      wrap.className = "chartwrap"; wrap.id = "cw";
+      wrap.innerHTML = '<svg class="chart" id="chart"></svg><div class="tip" id="tip"></div>';
+      box.replaceWith(wrap);
+      svg = $("#chart");
+      measure();
+    }
+
+    var order = ev.outcomes.map(function(o,i){ return { o:o, i:i }; }).sort(function(a,b){
+      return (b.o.px - a.o.px) || a.o.name.localeCompare(b.o.name);
     });
-    $("#rows").innerHTML = html;
-  }
-
-  function renderTiles(){
-    $("#tiles").innerHTML = EVENTS[1].outcomes.map(function(o,i){
-      var up = o.chg >= 0;
-      return '<div class="tile" data-tile="'+i+'">'+
-        '<div class="n"><span class="mav" style="width:17px;height:17px;font-size:8.5px">'+o.name[0]+'</span>'+
-        o.name+'</div>'+
-        '<div class="p mono">'+cents(o.px)+'</div>'+
-        '<div class="c mono '+(up?"up":"down")+'">'+(up?"\u25B2":"\u25BC")+Math.abs(o.chg).toFixed(1)+
-        '\u00A2</div></div>';
+    $("#cands").innerHTML = order.map(function(it){
+      var x = it.o, i = it.i;
+      return '<div class="cand '+(i===state.out?"on":"")+'" data-cand="'+i+'">'+
+        '<span class="cav">'+x.name[0]+'</span>'+
+        '<span class="cn">'+x.name+'</span>'+
+        '<span class="cq mono '+(x.chg>=0?"up":"down")+'">'+
+          (settled ? "" : (x.chg>=0?"+":"")+x.chg.toFixed(1))+'</span>'+
+        '<span class="cv mono">'+cents(x.px)+'</span></div>';
     }).join("");
+
+    renderTicket();
   }
 
-  function renderStats(){
-    var ev = EVENTS[0];
-    var vol = ev.outcomes.reduce(function(a,o){ return a + o.vol; }, 0);
-    $("#sVol").textContent = money0(vol);
-    $("#sOI").textContent = money0(vol * 0.27);
-    $("#sTr").textContent = (640 + (hashStr("shots") % 900)).toLocaleString("en-US");
+  function legKey(ei,oi,side){ return ei+"-"+oi+"-"+side; }
+  function payout(){
+    var keys = Object.keys(legs);
+    if(!keys.length) return null;
+    var mult = 1;
+    keys.forEach(function(k){
+      var p = k.split("-"), o = EVENTS[+p[0]].outcomes[+p[1]];
+      var price = p[2] === "yes" ? o.px : 100 - o.px;
+      mult *= 100/Math.max(1, price);
+    });
+    return { n:keys.length, mult:mult, out:10*mult };
+  }
+
+  function renderTicket(){
+    var ev = cur(), o = curOut();
+    if(ev.winner){
+      $("#ticket").innerHTML = '<div class="slipbar" style="margin:0">'+
+        '<span>Closed. <b>'+ev.winner+'</b> took it at 100\u00A2.</span></div>';
+      return;
+    }
+    var yOn = legs[legKey(state.ei, state.out, "yes")], nOn = legs[legKey(state.ei, state.out, "no")];
+    var p = payout();
+    var html = '<div class="trow"><span class="lbl">'+o.name+' · $10 stake</span>'+
+      '<span class="px mono">'+cents(o.px)+'</span></div>'+
+      '<div class="trow" style="margin-top:7px;gap:6px">'+
+        '<button class="obtn y '+(yOn?"on":"")+'" data-buy="yes">Yes '+cents(o.px)+'</button>'+
+        '<button class="obtn n '+(nOn?"on":"")+'" data-buy="no">No '+cents(100-o.px)+'</button>'+
+      '</div>';
+    if(p){
+      html += '<div class="slipbar"><span><b>'+p.n+' bet'+(p.n>1?"s":"")+'</b> · '+
+        p.mult.toFixed(2)+'x · $10 \u2192 <b>'+money0(p.out)+'</b></span>'+
+        '<button class="place" id="place">Place</button>'+
+        '<button class="clearbtn" id="clear">clear</button></div>';
+    } else {
+      html += '<div class="slipbar"><span>Tap Yes or No to build a parlay</span></div>';
+    }
+    $("#ticket").innerHTML = html;
   }
 
   function renderTicker(){
-    var items = [];
-    EVENTS.forEach(function(ev, ei){
-      ev.outcomes.forEach(function(o){
-        var up = o.chg >= 0;
-        items.push('<span class="tk">'+o.name+' <b class="mono">'+cents(o.px)+'</b>'+
-          '<span class="mono '+(up?"up":"down")+'">'+(up?"\u25B2":"\u25BC")+
-          Math.abs(o.chg).toFixed(1)+'\u00A2</span></span>');
-      });
-    });
-    $("#ticker").innerHTML = items.join("") + items.join("");
+    var items = EVENTS.map(function(ev){
+      if(ev.winner){
+        return '<span class="tk"><span class="done">SETTLED</span> '+ev.winner+
+          ' <i>'+ev.q+'</i> <b class="mono">100\u00A2</b></span>';
+      }
+      var o = ev.outcomes[0];
+      return '<span class="tk">'+o.name+' <i>'+ev.q+'</i> <b class="mono">'+cents(o.px)+'</b>'+
+        '<span class="mono '+(o.chg>=0?"up":"down")+'">'+(o.chg>=0?"\u25B2":"\u25BC")+
+        Math.abs(o.chg).toFixed(1)+'</span></span>';
+    }).join("");
+    $("#ticker").innerHTML = items + items;
   }
 
-  /* ---------- clock ---------- */
-  var closeAt = Date.now() + 1000*60*60*38 + 1000*60*14;
   function renderClock(){
-    var ms = Math.max(0, closeAt - Date.now());
-    var d = Math.floor(ms/86400000), h = Math.floor(ms/3600000)%24, m = Math.floor(ms/60000)%60;
-    $("#sClose").textContent = (d? d+"d " : "") + h + "h " + (m<10?"0":"") + m + "m";
-    $("#clock").textContent = "Last update " + new Date().toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"});
+    $("#clock").textContent = "Last update " +
+      new Date().toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"});
   }
 
-  /* ---------- live tick ---------- */
+  /* ---------- live ---------- */
   function tick(){
-    var ev = EVENTS[0];
-    ev.outcomes.forEach(function(o){
-      o.px = clamp(o.px + (Math.random()-0.5)*1.6, 1, 96);
-      o.chg += (Math.random()-0.5)*0.25;
-      o.vol += Math.floor(Math.random()*700);
+    EVENTS.forEach(function(ev){
+      if(ev.winner) return;
+      ev.outcomes.forEach(function(o){
+        o.px = clamp(o.px + (Math.random()-0.5)*1.4, 1, 96);
+        o.chg = Math.round((o.chg + (Math.random()-0.5)*0.2) * 10) / 10;
+        o.vol += Math.floor(Math.random()*380);
+      });
+      var sum = ev.outcomes.reduce(function(a,o){ return a + o.px; }, 0);
+      ev.outcomes.forEach(function(o){ o.px = clamp(Math.round(o.px*100/sum), 1, 99); });
+      balance(ev);
     });
-    var sum = ev.outcomes.reduce(function(a,o){ return a + o.px; }, 0);
-    ev.outcomes.forEach(function(o){ o.px = clamp(Math.round(o.px * 100/sum), 1, 99); });
-    balance(ev);
-    EVENTS[1].outcomes.forEach(function(o){
-      o.chg += (Math.random()-0.5)*0.2;
-    });
-
     advance();
-    renderTicker(); renderRows(); renderHead(); renderStats(); renderTiles(); draw();
+    renderBoard(); renderSlip(); renderTicker();
   }
 
-  /* ---------- toast ---------- */
   function toast(msg){
     var el = document.createElement("div");
     el.className = "toast"; el.textContent = msg;
@@ -640,51 +633,48 @@
       el.style.transition = "opacity .3s,transform .3s";
       el.style.opacity = 0; el.style.transform = "translateY(5px)";
       setTimeout(function(){ el.remove(); }, 320);
-    }, 2400);
+    }, 2600);
   }
 
-  /* ---------- events ---------- */
+  function select(ei){
+    state.ei = ei;
+    state.out = 0;
+    renderBoard(); renderSlip(); measure(); draw();
+  }
+
+  /* ---------- clicks ---------- */
   document.addEventListener("click", function(e){
-    var r = e.target.closest("[data-row]");
-    if(r && !e.target.closest("[data-buy]")){
-      state.out = +r.dataset.row;
-      renderRows(); renderHead(); draw();
-      return;
-    }
     var b = e.target.closest("[data-buy]");
     if(b){
-      e.stopPropagation();
-      state.out = +b.dataset.i;
-      renderRows(); renderHead(); draw();
-      var o = EVENTS[0].outcomes[state.out];
-      var px = b.dataset.buy === "yes" ? o.px : 100 - o.px;
-      toast("Bought 10 " + b.dataset.buy.toUpperCase() + " · " + o.name + " @ " + cents(px) +
-        " — nothing actually happened.");
-      return;
+      if(isSettled()) return;
+      var side = b.dataset.buy;
+      var k = legKey(state.ei, state.out, side), o = curOut();
+      if(legs[k]){ delete legs[k]; toast("Removed \u00B7 "+o.name+" "+side.toUpperCase()); }
+      else {
+        legs[k] = true;
+        toast("Added \u00B7 "+side.toUpperCase()+" "+o.name+" @ "+cents(side==="yes"?o.px:100-o.px));
+      }
+      renderBoard(); renderTicket(); return;
     }
-    var t = e.target.closest("[data-tile]");
-    if(t){
-      var to = EVENTS[1].outcomes[+t.dataset.tile];
-      toast(to.name + " last to arrive · " + cents(to.px) + " — not a real market.");
-      return;
-    }
+    var c = e.target.closest("[data-cand]");
+    if(c){ state.out = +c.dataset.cand; renderSlip(); draw(); return; }
+
+    var row = e.target.closest("[data-ev]");
+    if(row){ select(+row.dataset.ev); return; }
+
     var rg = e.target.closest("[data-range]");
-    if(rg){
-      state.range = rg.dataset.range;
-      renderRanges(); draw();
+    if(rg){ state.range = rg.dataset.range; renderRanges(); draw(); return; }
+
+    if(e.target.closest("#place")){
+      var p = payout();
+      if(p) toast("Bet placed \u00B7 "+p.n+" leg"+(p.n>1?"s":"")+" \u00B7 pays "+money0(p.out)+
+        ". You will not be paid.");
       return;
     }
-    var ty = e.target.closest("[data-type]");
-    if(ty){
-      state.type = ty.dataset.type;
-      document.querySelectorAll("#ctype button").forEach(function(x){
-        x.classList.toggle("on", x.dataset.type === state.type);
-      });
-      draw();
-      return;
-    }
+    if(e.target.closest("#clear")){ legs = {}; renderBoard(); renderTicket(); toast("Bet slip cleared."); return; }
+
     var f = e.target.closest("[data-fake]");
-    if(f){ e.preventDefault(); toast(f.dataset.fake + " isn’t part of the joke."); return; }
+    if(f){ e.preventDefault(); toast(f.dataset.fake+" isn’t part of the joke."); return; }
     if(e.target.closest("#deposit")){ toast("Deposits disabled. Your $1,000 is imaginary."); return; }
   });
 
@@ -701,14 +691,13 @@
     if(saved) document.documentElement.setAttribute("data-theme", saved);
   }catch(err){}
 
-  balance(EVENTS[0]); balance(EVENTS[1]);
-  renderRanges(); renderRows(); renderTiles(); renderTicker(); renderStats(); renderHead(); renderClock();
-  measure(); draw();
+  renderBoard(); renderTicker(); renderRanges();
+  renderSlip(); measure(); draw(); renderClock();
 
   if(window.ResizeObserver){
-    new ResizeObserver(function(){ measure(); draw(); }).observe($("#cw"));
+    new ResizeObserver(function(){ if(measure()) draw(); }).observe($("main"));
   }
-  window.addEventListener("resize", function(){ measure(); draw(); });
+  window.addEventListener("resize", function(){ if(measure()) draw(); });
 
   setInterval(tick, 5200);
   setInterval(renderClock, 30000);
